@@ -23,6 +23,7 @@ jobs:
             echo $(node --version)
             echo "NPM --version" 
             echo $(npm --version)
+            npm install typescript@3.5.3
             npm run frontend:install
       - run:
           name: Install API Dependencies
