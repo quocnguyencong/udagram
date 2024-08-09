@@ -1,0 +1,41 @@
+# Exclude node_modules and other non-essential files from deployment
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Exclude local configuration files
+.env
+*.local
+
+# Exclude test directories and files
+test/
+tests/
+*.spec.js
+
+# Exclude build artifacts
+dist/
+build/
+
+# Exclude documentation and other non-code files
+README.md
+docs/
+*.md
+
+# Exclude deployment and configuration files specific to local environments
+Dockerfile
+docker-compose.yml
+*.local
+
+# Exclude IDE/editor configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Exclude OS-specific files
+.DS_Store
+Thumbs.db
+
+# Exclude temporary files
+*.tmp
+*.swp

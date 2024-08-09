@@ -14,8 +14,8 @@ jobs:
       # install node and checkout code
       - node/install:
           node-version: '14.15'         
-      - eb/setup
-      - aws-cli/setup
+      #- eb/setup
+      #- aws-cli/setup
       - checkout
       # Use root level package.json to install dependencies in the frontend app
       - run:
@@ -46,16 +46,6 @@ jobs:
           command: |
             echo "Build the backend API"
             npm run api:build
-      - run:
-          name: API Deploy
-          command: |
-            echo "Build the backend API"
-            npm run api:deploy
-      - run:
-          name: Frontend Deploy
-          command: |
-            echo "Build the backend API"
-            npm run frontend:deploy
   # deploy step will run only after manual approval
   deploy:
     docker:
@@ -80,3 +70,15 @@ workflows:
   udagram:
     jobs:
       - build
+      - hold
+          filters:
+            branches:
+              only:
+                - master
+                - main
+          type: approval
+          requires:
+            - build
+      - deploy:
+        requires:
+          - hold
